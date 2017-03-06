@@ -5,6 +5,7 @@ import com.example.desarrollo7.myapplication.vos.MarvelResponse
 import io.reactivex.Observable
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -13,4 +14,7 @@ import retrofit2.http.Query
 interface CharacterService {
     @GET(Cons.URL_ALL_CHARACTERS)
     fun listAll(@Query(Cons.APIKEY) apikey: String, @Query(Cons.HASH) hash: String, @Query(Cons.OFFSET) offset: String, @Query(Cons.TIMESTAMP) timestamp: String): Observable<MarvelResponse>
+
+    @GET(Cons.URL_ONE_CHARACTERS)
+    fun listOne(@Path("id") id: Int, @Query(Cons.APIKEY) apikey: String, @Query(Cons.HASH) hash: String, @Query(Cons.TIMESTAMP) timestamp: String): Observable<MarvelResponse>
 }

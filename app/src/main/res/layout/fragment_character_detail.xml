@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.desarrollo7.myapplication.fragments.CharacterDetail">
+
+    <data>
+        <variable name="controller" type="com.example.desarrollo7.myapplication.controllers.CharacterController"/>
+        <variable name="character" type="com.example.desarrollo7.myapplication.models.Character"/>
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/character_fragment"
+        android:background="@color/colorAccent">
+
+        <ProgressBar
+            android:id="@+id/character_progress_bar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/custom_progress_background"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"/>
+
+        <ScrollView
+            android:id="@+id/character_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/thumbnail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:text="@{character.name}"
+                        android:textColor="@color/primaryLightText"
+                        android:layout_alignParentTop="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{character.description}"
+                        android:id="@+id/description"
+                        android:textColor="@color/blue"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Comics"
+                        android:textColor="@color/secondary_text"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/total_comics"
+                        android:textColor="@color/primaryLightText"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ListView
+                        android:id="@+id/comics_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="25dp"
+                        android:listSelector="@android:color/transparent"
+                        android:divider="@null" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Series"
+                        android:textColor="@color/secondary_text"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/total_series"
+                        android:textColor="@color/primaryLightText"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ListView
+                        android:id="@+id/series_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:listSelector="@android:color/transparent"
+                        android:divider="@null"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Eventos"
+                        android:layout_marginTop="15dp"
+                        android:textColor="@color/secondary_text"
+                        android:layout_marginLeft="10dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/total_events"
+                        android:textColor="@color/primaryLightText"
+                        android:layout_marginLeft="10dp"/>
+
+                    <ListView
+                        android:id="@+id/events_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginLeft="15dp"
+                        android:listSelector="@android:color/transparent"
+                        android:divider="@null"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</layout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.desarrollo7.myapplication.CharacterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar">
+        </include>
+
+        <FrameLayout
+            android:id="@+id/character_container_frame_layout"
+            android:layout_marginTop="?attr/actionBarSize"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</layout>

@@ -12,15 +12,9 @@ class Character(val id: Int = 0,
                 val description: String = "",
                 val thumbnail: CharacterThumbnail? = null,
                 var comics: CharacterComics? = null,
-                var series: CharacterSeries? = null
-                /*
-                var series: List<JSONObject> = listOf(),
-                var totalStories: Int = 0,
-                var stories: List<JSONObject> = listOf(),
-                var events: List<JSONObject> = listOf(),
-                var totalEvents: Int = 0,
-                var urls: List<JSONObject> = listOf()
-                */
+                var series: CharacterSeries? = null,
+                var events: CharacterEvents? = null,
+                var stories: CharacterStories? = null
                 ){
 
     class CharacterThumbnail(val path:String, val extension:String){
@@ -29,6 +23,19 @@ class Character(val id: Int = 0,
         }
     }
 
-    class CharacterComics(val available: Int = 0)
-    class CharacterSeries(val available: Int = 0)
+    class CharacterComics(val available: Int = 0, val items: MutableList<Comic>) {
+        class Comic(val name: String = "")
+    }
+
+    class CharacterSeries(val available: Int = 0, items: MutableList<Serie>) {
+        class Serie(val name: String = "")
+    }
+
+    class CharacterEvents(val available: Int = 0, val items: MutableList<Event>) {
+        class Event(val name: String = "")
+    }
+
+    class CharacterStories(val available: Int = 0, val items: MutableList<Story>) {
+        class Story(val name: String = "")
+    }
 }

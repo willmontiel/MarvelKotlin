@@ -3,15 +3,19 @@ package com.example.desarrollo7.myapplication.controllers
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.annotation.TargetApi
+import android.content.Intent
 import android.os.Build
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import com.example.desarrollo7.myapplication.CharacterActivity
 import com.example.desarrollo7.myapplication.MainActivity
 import com.example.desarrollo7.myapplication.adapters.CharactersAdapter
 import com.example.desarrollo7.myapplication.misc.EndlessRecyclerViewScrollListener
+import com.example.desarrollo7.myapplication.models.Character
 import com.example.desarrollo7.myapplication.rest.RestClient
 import com.example.desarrollo7.myapplication.rest.api.Cons
+import com.example.desarrollo7.myapplication.rest.api.JsonKeys
 import com.example.desarrollo7.myapplication.rest.services.CharacterService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -19,14 +23,20 @@ import io.reactivex.schedulers.Schedulers
 /**
  * Created by desarrollo7 on 1/03/17.
  */
-class MainController(val mainActivity: MainActivity)
+class MainController(val mainActivity: MainActivity) {
+    fun seeDetails(character: Character) {
+        val i = Intent(mainActivity, CharacterActivity::class.java)
+        i.putExtra(JsonKeys.CHARACTER_ID, "" + character.id)
+        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        mainActivity.startActivity(i)
+    }
+}
 
 /**
  * Refresh the content
  */
 fun MainActivity.refreshData() {
     adapter.notifyDataSetChanged()
-    //adapter.notifyItemRangeChanged(0, items.size)
     showProgress(false, progressBar)
 }
 
@@ -47,7 +57,7 @@ fun MainActivity.setupRecyclerView() {
         val mLayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = mLayoutManager
 
-        adapter = CharactersAdapter(items, applicationContext)
+        adapter = CharactersAdapter(items, applicationContext, controller)
         recyclerView.adapter = adapter
         // Retain an instance so that you can call `resetState()` for fresh searches
 

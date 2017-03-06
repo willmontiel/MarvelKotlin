@@ -2,6 +2,17 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="character"
+            type="com.example.desarrollo7.myapplication.models.Character"/>
+
+        <variable
+            name="controller"
+            type="com.example.desarrollo7.myapplication.controllers.MainController"/>
+    </data>
+
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:background="@color/cardviewColor"
@@ -40,8 +51,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/primaryLightText"
-                    android:text="Character"
-                    android:id="@+id/name"
+                    android:text="@{character.name}"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:layout_alignParentTop="true"
@@ -71,12 +81,14 @@
                     android:layout_marginLeft="10dp"/>
 
                 <TextView
+                    android:id="@+id/details_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
                     android:text="Ver más"
                     android:maxLines="1"
                     android:layout_gravity="right|bottom"
+                    android:onClick="@{(view) -> controller.seeDetails(character)}"
                     android:layout_alignParentBottom="true"
                     android:layout_marginTop="10dp"
                     android:paddingRight="10dp"/>

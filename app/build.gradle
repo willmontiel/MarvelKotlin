@@ -24,48 +24,47 @@ android {
         }
     }
 
-   /* sourceSets{
+    /* sourceSets{
         main.java.srcDirs += "src/main/kotlin"
     }*/
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    /*androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
-    })*/
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    })
 
-    testCompile 'junit:junit:4.12'
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
-    kapt "com.android.databinding:compiler:2.3.0"
-
-    compile 'com.android.support:design:25.2.0'
-    compile 'com.android.support:cardview-v7:25.2.0'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
-    compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-
     /*-------------------- RX ---------------------*/
     // Rx Android https://github.com/ReactiveX/RxAndroid
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    compile 'io.reactivex.rxjava2:rxjava:2.0.6'
     /*---------------------------------------------*/
 
     /*------------------- REST --------------------*/
     // Retrofit Rest Client https://github.com/square/retrofit
     compile "com.squareup.retrofit2:retrofit:$retrofit_version"
     //compile "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
-    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     // Retrofit GSON Converter https://github.com/square/retrofit/tree/master/retrofit-converters/gson
     compile "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     // GSON JSON serializer/deserializer https://github.com/google/gson
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:cardview-v7:25.2.0'
+    compile 'com.android.support:recyclerview-v7:25.2.0'
+    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.6'
+    compile 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
     compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.android.support.constraint:constraint-layout:+'
+    testCompile 'junit:junit:4.12'
+    kapt 'com.android.databinding:compiler:2.2.3'
 }
 
-kapt{
+kapt {
     generateStubs = true
 }
