@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Marvel Comics Consulting</string>
+    <string name="availables_comics_prompt">Este personaje aparece en: %1$s comics diferentes</string>
 </resources>

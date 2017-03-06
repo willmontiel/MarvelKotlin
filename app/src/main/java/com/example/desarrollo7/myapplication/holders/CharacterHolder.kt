@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.desarrollo7.myapplication.controllers.CharacterController
-import com.example.desarrollo7.myapplication.controllers.MainController
 import com.example.desarrollo7.myapplication.databinding.FragmentCharacterDetailBinding
 import com.example.desarrollo7.myapplication.models.Character
 import com.example.desarrollo7.myapplication.rest.api.JsonKeys
@@ -20,10 +19,10 @@ class CharacterHolder(var binding: FragmentCharacterDetailBinding, var context: 
         binding.character = character
         binding.controller = controller
 
-        setThumbnail(getUrlThumbnail(JsonKeys.CHARACTER_THUMBNAIL_RATIO_LANDSCAPE_INCREDIBLE))
+        setImage(getImageUrl(JsonKeys.CHARACTER_THUMBNAIL_RATIO_LANDSCAPE_XLARGE))
     }
 
-    fun getUrlThumbnail(size: String): String {
+    fun getImageUrl(size: String): String {
         val thumbnailData = character.thumbnail
         var url = ""
         if(thumbnailData != null)
@@ -31,10 +30,11 @@ class CharacterHolder(var binding: FragmentCharacterDetailBinding, var context: 
         return url
     }
 
-    fun setThumbnail(url: String) {
+    fun setImage(url: String) {
         Glide.with(this.context).load(url)
                 .thumbnail(0.5f)
                 .crossFade()
+                //.fitCenter()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(binding.thumbnail)
     }

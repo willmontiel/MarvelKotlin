@@ -1,6 +1,7 @@
 package com.example.desarrollo7.myapplication.models
 
-import com.google.gson.JsonObject
+import android.content.res.Resources
+import com.example.desarrollo7.myapplication.R
 
 
 /**
@@ -18,12 +19,16 @@ class Character(val id: Int = 0,
                 ){
 
     class CharacterThumbnail(val path:String, val extension:String){
-        fun getThumb(size:String): String{
+        fun getThumb(size:String): String {
             return "$path/$size.$extension"
         }
     }
 
     class CharacterComics(val available: Int = 0, val items: MutableList<Comic>) {
+        fun getAvailables(text: String): String {
+            return String.format(text, available.toString())
+        }
+
         class Comic(val name: String = "")
     }
 
